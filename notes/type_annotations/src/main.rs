@@ -1,6 +1,8 @@
 use std::collections::HashMap; // Necessary for using 'HashMap' in 'Collection types'
 use std::collections::HashSet; // Necessary for using 'HashSet' in 'Collection types'
 use std::ffi::CStr; // Necessary for using 'CStr' in 'String types'
+use std::fs::File; // Necessary for using 'File' in 'Result<T, E>'
+use std::io::Read; // Necessary for using 'Read' in 'Result<T, E>'
 
 // Use to ignore the warning message
 #[allow(unused_variables)]
@@ -155,6 +157,14 @@ fn main() {
     } else {
         println!("Result 2: Cannot divide by zero.");
     }
+
+    // Result<T, E> is a generic enumeration that represents the outcome of an operation, which can either be successful 'Ok(T)' or result in error 'Err(E)'
+    let result3 = read_file_contents("file_name.txt");
+
+    match result3 {
+        Ok(contents) => println!("File contents: {}", contents),
+        Err(error) => println!("Error reading the file: {}", error),
+    }
 }
 
 fn option_example(a: f64, b: f64) -> Option<f64> {
@@ -163,4 +173,11 @@ fn option_example(a: f64, b: f64) -> Option<f64> {
     } else {
         None
     }
+}
+
+fn read_file_contents(file_name: &str) -> Result<String, std::io::Error> {
+    let mut file = File::open(file_name)?;
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)?;
+    Ok(contents)
 }
