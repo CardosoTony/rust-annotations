@@ -36,6 +36,10 @@
       <td>✨ <code alt="sparkles">:sparkles:</code></td>
     </tr>
     <tr>
+      <td>Exercises</td>
+      <td>📝 <code alt="memo">:memo:</code></td>
+    </tr>
+    <tr>
       <td>First commit</td>
       <td>🎉 <code alt="tada">:tada:</code></td>
     </tr>
